@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Sprzedaż w styczniu" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fdc43cbb-b2e5-43da-95db-e4b4c4c58119">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from ile_sprzedano_dzien
+where data between to_date('01/01/2021','DD/MM/YYYY') and to_date('31/01/2021','DD/MM/YYYY')]]>
+	</queryString>
+	<field name="DATA" class="java.sql.Timestamp"/>
+	<field name="ILOSC_SPRZEDANYCH_PRODUKTOW" class="java.math.BigDecimal"/>
+	<field name="SUMA_ZE_SPRZEDAZY" class="java.math.BigDecimal"/>
+	<field name="ZYSK" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="176" y="51" width="226" height="28" uuid="d49e22e4-d39b-4c16-a984-268f1f2357aa"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sprzedaż w styczniu 2021]]></text>
+			</staticText>
+			<image>
+				<reportElement x="187" y="0" width="226" height="53" uuid="2e05cb45-8504-4f6f-a842-45e787ecba54"/>
+				<imageExpression><![CDATA["C:\\Users\\pc\\Desktop\\Studia\\Semestr_3\\BD\\PROJEKT_BD\\logo-revolution.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="142" y="0" width="151" height="20" uuid="6acf2b17-73e6-448a-ac47-c63785e7f5d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Ilość]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="0" width="131" height="20" uuid="d92466ca-3521-4cde-95c4-ecb1660b235f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Suma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="424" y="0" width="131" height="20" uuid="7a36ac04-0c64-4d6c-afde-b2ac5138058d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Zysk]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="21" width="555" height="1" uuid="ab158491-fd31-4699-afd3-801ef5b99eb0"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="142" height="20" uuid="3bf788f2-8d32-48d0-b7d3-02a6af185693"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Data sprzedaży]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#99CCFF" uuid="bfdba488-17b7-43f3-b12b-01f801aca4dc">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT}.intValue()%2==0]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="0" width="151" height="20" uuid="c2f78494-f1f9-4cf8-9f1e-99317687c789"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ILOSC_SPRZEDANYCH_PRODUKTOW}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="0" width="131" height="20" uuid="bc9ba87b-7366-45ca-a59b-4ef0d4e7753b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUMA_ZE_SPRZEDAZY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="424" y="0" width="131" height="20" uuid="ab0a28ab-0846-4b3e-abea-60733cc14784"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ZYSK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="142" height="20" uuid="83e701fa-e460-4ddf-b728-e8877cdf3987"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="436" y="22" width="119" height="20" uuid="f030adf4-a672-4539-83b6-fd33a8a8fb66"/>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Łączny zysk: 7239.59 zł]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
